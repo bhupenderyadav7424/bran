@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bran-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bran
+  template:
+    metadata:
+      labels:
+        app: bran
+    spec:
+      containers:
+      - name: bran
+        image: <bran-image>
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENV_VAR_1
+          value: "value1"
+        - name: ENV_VAR_2
+          value: "value2"
